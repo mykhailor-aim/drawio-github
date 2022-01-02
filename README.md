@@ -16,6 +16,10 @@ An example for integration into GitHub wikis is available here: https://github.c
 
 Supported file formats: .png, .svg, .html and .xml (default)
 
+## Dark Mode
+
+[SVG dark mode support](DARK-MODE.md)
+
 ## Self-editing SVG file
 
 ![Self-editing Diagram](http://jgraph.github.io/drawio-github/self-editing.svg)
