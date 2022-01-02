@@ -36,5 +36,4 @@ on the system setting:
 
 ![Diagram with dark mode support](diagram-light-dark.svg)
 
-The modified SVG can be seen <a href="
-https://github.com/jgraph/drawio-github/blob/master/diagram-light-dark.svg?short_path=32540fb" target="_blank">here</a>.
+The modified SVG can be seen <a href="https://github.com/jgraph/drawio-github/blob/master/diagram-light-dark.svg?short_path=32540fb" target="_blank">here</a>.
