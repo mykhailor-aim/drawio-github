@@ -1,5 +1,7 @@
 # diagrams.net Dark Mode in SVG
 
+## CSS Media Query
+
 To support dark mode in SVG, add the following CSS to the SVG defs section:
 
 ```
@@ -29,11 +31,60 @@ To support dark mode in SVG, add the following CSS to the SVG defs section:
 ```
 
 This will change the SVG according to the current *system* setting. The light and
-dark color variables in the CSS can be changed to reflect the containing page.
+dark color variables in the CSS can be changed to reflect the containing page
+(the above example is optimized for GitHub dark theme).
 
 Here is an example that will render in dark mode in GitHub markdown depending
-on the system setting:
+on your system setting:
 
-![Diagram with dark mode support](diagram-light-dark.svg)
+![Diagram with system dark mode](diagram-light-dark.svg)
 
 The modified SVG can be seen <a href="https://github.com/jgraph/drawio-github/blob/master/diagram-light-dark.svg?short_path=32540fb" target="_blank">here</a>.
+
+## CSS Target
+
+If you need more control over dark mode in SVG images, the target rule can be used in
+CSS as follows. This will enable dark mode if the image is loaded with a #dark hash
+property. Note that the SVG element must be given an ID, the media query must be removed
+and the rules must be preprended with :target for this to work:
+
+```
+<style type="text/css">
+:root {--light-color: #c9d1d9; --dark-color: #0d1117; }
+svg:target[style^="background-color:"] { background-color: var(--dark-color) !important; }
+:target g[filter="url(#dropShadow)"] { filter: none !important; }
+:target [stroke="rgb(0, 0, 0)"] { stroke: var(--light-color); }
+:target [stroke="rgb(255, 255, 255)"] { stroke: var(--dark-color); }
+:target [fill="rgb(0, 0, 0)"] { fill: var(--light-color); }
+:target [fill="rgb(255, 255, 255)"] { fill: var(--dark-color); }
+:target g[fill="rgb(0, 0, 0)"] text { fill: var(--light-color); }
+:target div[data-drawio-colors*="color: rgb(0, 0, 0)"]
+    div { color: var(--light-color) !important; }
+:target div[data-drawio-colors*="border-color: rgb(0, 0, 0)"]
+    { border-color: var(--light-color) !important; }
+:target div[data-drawio-colors*="border-color: rgb(0, 0, 0)"]
+    div { border-color: var(--light-color) !important; }
+:target div[data-drawio-colors*="background-color: rgb(255, 255, 255)"]
+    { background-color: var(--dark-color) !important; }
+:target div[data-drawio-colors*="background-color: rgb(255, 255, 255)"]
+    div { background-color: var(--dark-color) !important; }
+</style>
+```
+
+Dark mode can now be enabled by adding #dark to the image source:
+
+![Diagram with target dark mode](diagram-target-dark.svg#dark)
+
+To disable dark mode, remove #dark from the image source:
+
+![Diagram with target dark mode](diagram-target-dark.svg)
+
+With this solution, dark mode can be enabled by using JavaScript on a
+page, for example, the following appends #dash to the src attribute of
+all images that match *.drawio.svg if the page background is not white:
+
+```
+getComputedStyle(document.body).backgroundColor != 'rgba(0, 0, 0, 0)' ?
+	document.querySelectorAll('img[src$=".drawio.svg"]').forEach(
+		img => img.src += '#dark') : 0;
+```
