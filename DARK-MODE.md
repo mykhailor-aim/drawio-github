@@ -4,7 +4,7 @@
 
 To support dark mode in SVG, add the following CSS to the SVG defs section:
 
-```
+```css
 <style type="text/css">
 @media (prefers-color-scheme: dark)
 {
@@ -46,7 +46,7 @@ used as follows. This will enable dark mode if the image is loaded with a #dark 
 property - or any other value that you assign to the SVG ID attribute. The media query
 must be removed and :target must be added, resulting in the following CSS:
 
-```
+```css
 <style type="text/css">
 :root {--light-color: #c9d1d9; --dark-color: #0d1117; }
 svg:target[style^="background-color:"] { background-color: var(--dark-color) !important; }
@@ -80,7 +80,7 @@ To disable dark mode, remove #dark from the image source:
 In the following example, #dark is appended to the src attribute of
 all images matching *.drawio.svg if the page background is not white:
 
-```
+```js
 getComputedStyle(document.body).backgroundColor != 'rgba(0, 0, 0, 0)' ?
 	document.querySelectorAll('img[src$=".drawio.svg"]').forEach(
 		img => img.src += '#dark') : 0;
