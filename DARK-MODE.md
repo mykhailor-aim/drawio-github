@@ -41,10 +41,10 @@ on your system setting:
 
 ## CSS Target
 
-If you need more control over dark mode in SVG images, the target rule can be used in
-CSS as follows. This will enable dark mode if the image is loaded with a #dark hash
-property. Note that the SVG element must be given an ID, the media query must be removed
-and the rules must be preprended with :target for this to work:
+If you need more control over dark mode in SVG images, the target CSS pseudo-class can be
+used as follows. This will enable dark mode if the image is loaded with a #dark hash
+property - or any other value that you assign to the SVG ID attribute. The media query
+must be removed and :target must be added, resulting in the following CSS:
 
 ```
 <style type="text/css">
@@ -77,9 +77,8 @@ To disable dark mode, remove #dark from the image source:
 
 ![Diagram with target dark mode](diagram-target-dark.svg)
 
-With this solution, dark mode can be enabled by using JavaScript on a
-page, for example, the following appends #dash to the src attribute of
-all images that match *.drawio.svg if the page background is not white:
+In the following example, #dark is appended to the src attribute of
+all images matching *.drawio.svg if the page background is not white:
 
 ```
 getComputedStyle(document.body).backgroundColor != 'rgba(0, 0, 0, 0)' ?
