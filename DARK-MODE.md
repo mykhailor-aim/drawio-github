@@ -39,8 +39,6 @@ on your system setting:
 
 ![Diagram with system dark mode](diagram-light-dark.svg)
 
-The modified SVG can be seen <a href="https://github.com/jgraph/drawio-github/blob/master/diagram-light-dark.svg?short_path=32540fb" target="_blank">here</a>.
-
 ## CSS Target
 
 If you need more control over dark mode in SVG images, the target rule can be used in
