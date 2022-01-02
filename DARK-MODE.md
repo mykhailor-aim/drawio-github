@@ -1,6 +1,6 @@
-# diagrams.net Dark Mode in SVG
+# diagrams.net Dark Mode in SVG with CSS
 
-## CSS Media Query
+## CSS prefers-color-scheme Media Feature
 
 To support dark mode in SVG, add the following CSS to the SVG defs section:
 
@@ -39,7 +39,7 @@ on your system setting:
 
 ![Diagram with system dark mode](diagram-light-dark.svg)
 
-## CSS Target
+## CSS Target Pseudo-Class
 
 If you need more control over dark mode in SVG images, the target CSS pseudo-class can be
 used as follows. This will enable dark mode if the image is loaded with a #dark hash
